@@ -1,5 +1,5 @@
 # ionic.cleanArchiteture
-Este é um simples projeto mobile de busca de CEP, desenvolvido com Ionic 6 + Angular 13 + Capacitor 3, com o objetivo de demonstrar a arquitetura e as boas práticas aplicadas.
+Este é um projeto simples, porém com arquitetura, organização de código e componentes modernos, paa fins de analíse e referencia. A aplicação faz uma busca de busca de CEP utilizando httpRequest na API. Desenvolvido com Ionic 6 + Angular 13 + Capacitor 3, com o objetivo de demonstrar a arquitetura e as boas práticas aplicadas.
 
 <h2>Clean Architecture</h2>
 
