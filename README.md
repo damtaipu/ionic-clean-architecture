@@ -34,7 +34,12 @@ Prefixo</h2>
 
 <p>O projeto tem foco no&nbsp;uso de componentes reutiliz&aacute;veis, uma vez que se permitem ser facilmente&nbsp;replicados, configurados e mantidos. O projeto traz o componente &lt;cep-search&gt;&lt;/cep-search&gt;.</p>
 
+
 <p>&nbsp;</p>
+
+<h2>Reducer ngRX (inspirado em Redux)</h2>
+
+<p>O projeto contará com gerenciamento reativo de estado dos componentes utilizando a biblioteca ngRx, tornando a aplicação mais poderosa quando se trata de comunicação componentes locais e globais.</p>
 
 <h2>Shared Module</h2>
 
