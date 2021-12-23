@@ -3,7 +3,7 @@ Este é um projeto simples, porém com arquitetura, organização de código e c
 
 <h2>Clean Architecture</h2>
 
-<p>O projeto mobile&nbsp;foi estruturado obedecendo ao padr&atilde;o <strong>Clean Architecture</strong> que divide a aplica&ccedil;&atilde;o em camadas por &aacute;rea de responsabilidades, como por exemplo,&nbsp;camada de modelo de dados, manipula&ccedil;&atilde;o de dados e exibi&ccedil;&atilde;o de dados. Assim, utilizamos um modelo arquitetural que melhor se adequa aos nossos crit&eacute;rios de produtividade e segura&ccedil;a no desenvlvimento, claro que haver&aacute; diferen&ccedil;a do modelo puro canonico da Clean Arquiteture, mas o objetivo n&atilde;o est&aacute; na implementa&ccedil;&atilde;o ipsis litteris mas sim, num modelo referencial correto que &agrave;s tarefas. Segue abaixo a estrutura de diret&oacute;rios do modelo:<br />
+<p>O projeto mobile&nbsp;foi estruturado obedecendo ao padr&atilde;o <strong>Clean Architecture</strong> que divide a aplica&ccedil;&atilde;o em camadas por &aacute;rea de responsabilidades, como por exemplo,&nbsp;camada de modelo de dados, manipula&ccedil;&atilde;o de dados e exibi&ccedil;&atilde;o de dados. Assim, utilizamos um modelo arquitetural que melhor se adequa aos nossos crit&eacute;rios de produtividade e segura&ccedil;a no desenvlvimento, claro que haver&aacute; diferen&ccedil;a do modelo puro canonico da Clean Arquiteture, mas o objetivo n&atilde;o est&aacute; na implementa&ccedil;&atilde;o ipsis litteris mas sim, num modelo referencial correto que atenda &agrave;s tarefas. Segue abaixo a estrutura de diret&oacute;rios do modelo:<br />
 <br />
 └── src/<br />
 &nbsp; &nbsp; ├── assets<br />
