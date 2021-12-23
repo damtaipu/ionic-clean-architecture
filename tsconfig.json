@@ -12,7 +12,13 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["es2018", "dom"]
+    "lib": ["es2018", "dom"],
+    "paths": {"@src/*": [
+      "src/*.android.ts", 
+      "src/*.ios.ts", 
+      "src/*.ts", 
+      "src/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

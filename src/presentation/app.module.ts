@@ -11,10 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { CepInterceptor } from 'src/core/interceptor/http.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GetCepRepository } from 'src/core/repositories/cep/get-cep.repository';
-import { CepFindDataRepository } from 'src/data/repository/cep.repository';
+import { CepFindDataRepository } from '@src/data/repository/cep/cep.repository';
 
 // SharedModule
-import { SharedModule } from 'src/shared/shared.module';
+import { SharedModule } from '@src/shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CepReturnModel } from 'src/core/domain/cep-model/cep-model';
-import { GetCepUseCase } from 'src/core/usecases/cep/get-cep.usecases';
+import { CepReturnModel } from '@src/core/domain/cep-model/cep-model';
+import { GetCepUseCase } from '@src/core/usecases/cep/get-cep.usecases';
 
 @Component({
   selector: 'cep-home',
@@ -37,7 +37,7 @@ export class HomePage {
       this.getCep.execute(cep).subscribe(
         rs => {
           this.cepData = rs;
-          this.cepChk = Object.keys(this.cepData).length;
+          this.cepChk = rs.erro ? 0 : Object.keys(this.cepData).length;
           this.errVal = rs.erro ? true : false;
           this.loading = false;
         },
@@ -48,6 +48,8 @@ export class HomePage {
           this.errVal = true;
           this.loading = false;
         });
+    }else{
+      this.cepChk = 0;
     }
   }
 }
