@@ -44,7 +44,7 @@ Prefixo</h2>
 
 <h2>Custom Script (package.json)</h2>
 
-<p>O projeto traz linhas customizadas na se&ccedil;&atilde;o script do package.json, tonando mais simples e r&aacute;pida&nbsp;as linhas de comandos NPM para buildar o projeto, bem como para criar components, pages, services, pipes etc..</p>
+<p>O projeto traz linhas customizadas na se&ccedil;&atilde;o script do package.json, tonando mais simples e r&aacute;pida a passagem dos command lines NPM para buildar o projeto, bem como para criar components, pages, services, pipes etc..</p>
 
 <p>&nbsp;</p>
 
