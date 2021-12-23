@@ -39,7 +39,7 @@ Prefixo</h2>
 
 <h2>Reducer ngRX (inspirado em Redux)</h2>
 
-<p>O projeto contará com gerenciamento reativo de estado dos componentes utilizando a biblioteca ngRx, tornando a aplicação mais poderosa quando se trata de comunicação componentes locais e globais.</p>
+<p>O projeto contará com gerenciamento reativo de estado dos componentes utilizando a biblioteca ngRx, tornando a aplicação mais poderosa quando se trata de comunicação entre os  componentes locais e globais.</p>
 
 <h2>Shared Module</h2>
 
