@@ -1,0 +1,7 @@
+{
+  "name": "cepFind",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

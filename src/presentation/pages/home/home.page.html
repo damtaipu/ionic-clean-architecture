@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Find CEP
+    </ion-title>
+  </ion-toolbar>
+  <cep-search (searchTermEvent)="callCep($event)"></cep-search>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="loadingEl" *ngIf="loading" size="2">
+        <ion-spinner name="crescent"></ion-spinner>
+      </ion-col>
+      <ion-col>
+        <ion-text *ngIf="startVal" color="primary">
+          <h3>Informe um CEP</h3>
+        </ion-text>
+
+        <ion-text *ngIf="errVal" color="danger">
+          <h3>CEP não encontrado!</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="cepChk !== 0">
+    <ion-row>
+      <ion-col>
+        <ion-text color="primary">
+          <h3>{{cepData.localidade}}/{{cepData.uf}}</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
