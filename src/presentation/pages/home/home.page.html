@@ -25,13 +25,13 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid *ngIf="cepChk !== 0">
+  <ion-grid *ngIf="getLengthCepData() > 0">
     <ion-row>
       <ion-col>
         <ion-text color="primary">
-          <h3>{{cepData.localidade}}/{{cepData.uf}}</h3>
+          <h3>{{cepData[0].localidade}}</h3>
         </ion-text>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> 
 </ion-content>
