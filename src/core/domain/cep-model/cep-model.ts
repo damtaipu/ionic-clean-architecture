@@ -12,7 +12,7 @@ export interface CepReturnModel {
     erro?: boolean;
 }
 
-export interface CepReturnEntity {
+export interface CepDataEntity {
     cep?: string;
     logradouro?: string;
     complemento?: string;

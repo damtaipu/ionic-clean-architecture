@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SetDataCep } from '@src/core/usecases/cep/set-data-send-cep';
 import { GetCepUseCase } from 'src/core/usecases/cep/get-cep.usecases';
 
 @Component({
@@ -6,6 +7,7 @@ import { GetCepUseCase } from 'src/core/usecases/cep/get-cep.usecases';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
 
   startVal = true;
@@ -17,10 +19,6 @@ export class HomePage {
     private getCep: GetCepUseCase
   ) {}
 
-  getLengthCepData(): number {
-    return this.cepData.length;
-  }
-
   async callCep(evt) {
     this.cepData = [];
     this.startVal = evt ? false : true;
@@ -31,21 +29,23 @@ export class HomePage {
 
     } else {
       this.loading = true;
-      const cep = {
-        cep: evt
-      };
-
-      this.getCep.execute(cep).subscribe(
-        rs => {
-          this.cepData = [rs];
-          this.loading = false;
-        },
-        err => {
-          console.log(err.error.isTrusted);
-          this.cepData = [];
-          this.errVal = true;
-          this.loading = false;
-        });
+      const cep = new SetDataCep(evt);
+      this.getCep.execute(cep.infoCep()).subscribe(this.onSuccess, this.onError);
     }
+  }
+
+  onSuccess = (rs) => {
+    this.cepData.push(rs);
+    this.loading = false;
+  };
+
+  onError = (err) => {
+    this.cepData = [];
+    this.errVal = true;
+    this.loading = false;
+  };
+
+  getLengthCepData(): number {
+    return this.cepData.length;
   }
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CepSendRequest, CepReturnModel, CepReturnEntity } from '@src/core/domain/cep-model/cep-model';
+import { CepSendRequest, CepReturnModel, CepDataEntity } from '@src/core/domain/cep-model/cep-model';
 import { GetCepRepository } from '@src/core/repositories/cep/get-cep.repository';
 
 
@@ -15,7 +15,7 @@ export class CepFindDataRepository extends GetCepRepository {
     constructor(private http: HttpClient){ super(); }
 
     getCep(param: CepSendRequest): Observable<CepReturnModel> {
-        return this.http.get<CepReturnEntity>(`https://viacep.com.br/ws/${param.cep}/json/`)
+        return this.http.get<CepDataEntity>(`https://viacep.com.br/ws/${param.cep}/json/`)
         .pipe(map((rs) => rs));
     }
 }
