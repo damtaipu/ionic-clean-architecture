@@ -1,5 +1,5 @@
 export class SetDataCep {
-    cep: number;
+    private cep: number;
 
     constructor(cep: number) {
         this.cep = cep;
