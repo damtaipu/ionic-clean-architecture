@@ -1,5 +1,5 @@
 # Ionic with Clean Architecture
-Este é um projeto simples, porém com arquitetura, organização de código e componentes modernos, para fins de analíse e referência. A aplicação faz uma busca de CEP utilizando a API https://viacep.com.br/ws/{cep}/json/. Desenvolvido com Ionic 6 + Angular 13 + Capacitor 3, com o objetivo de demonstrar a arquitetura e as boas práticas aplicadas.
+Este é um projeto simples, porém com arquitetura, organização de código e componentes modernos, para fins de analíse e referência. A aplicação faz uma busca de CEP utilizando a API https://viacep.com.br/ws/{cep}/json/, e foi desenvolvido com Ionic 6 + Angular 13 + Capacitor 3, com o objetivo de demonstrar a arquitetura e as boas práticas aplicadas.
 
 <h2>Clean Architecture</h2>
 
