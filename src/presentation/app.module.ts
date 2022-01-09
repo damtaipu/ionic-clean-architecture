@@ -16,6 +16,10 @@ import { CepFindDataRepository } from '@src/data/repository/cep/cep.repository';
 // SharedModule
 import { SharedModule } from '@src/shared/shared.module';
 
+// ngRx
+import { StoreModule } from '@ngrx/store';
+import { cepReducer } from '@src/shared/store/reducers/cep/cep-reducer';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,7 +28,8 @@ import { SharedModule } from '@src/shared/shared.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({cep: cepReducer})
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

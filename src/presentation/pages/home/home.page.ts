@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { SetDataCep } from '@src/core/usecases/cep/set-data-send-cep';
-import { GetCepUseCase } from 'src/core/usecases/cep/get-cep.usecases';
+import { ICepState } from '@src/shared/store/states/cep/cep-state';
+import { GetCepUseCase } from '@src/core/usecases/cep/get-cep.usecases';
+import { cepFalseState, cepTrueState } from '@src/shared/store/actions/cep/cep-actions';
 
 @Component({
   selector: 'cep-home',
@@ -15,9 +18,12 @@ export class HomePage {
   loading = false;
   cepData = [];
 
+
   constructor(
-    private getCep: GetCepUseCase
-  ) {}
+    private getCep: GetCepUseCase,
+    private cepNgx: Store<{cep: ICepState}>
+  ) {
+   }
 
   async callCep(evt) {
     this.cepData = [];
@@ -26,6 +32,7 @@ export class HomePage {
 
     if (!evt) {
       this.cepData = [];
+      this.cepStateFalse();
 
     } else {
       this.loading = true;
@@ -37,15 +44,27 @@ export class HomePage {
   onSuccess = (rs) => {
     this.cepData.push(rs);
     this.loading = false;
+    this.cepStateTrue();
   };
 
   onError = (err) => {
     this.cepData = [];
     this.errVal = true;
     this.loading = false;
+    this.cepStateFalse();
   };
 
   getLengthCepData(): number {
     return this.cepData.length;
   }
+
+  // Dispatch ngRx CEP
+  cepStateTrue(){
+    this.cepNgx.dispatch(cepTrueState());
+  }
+
+  cepStateFalse(){
+    this.cepNgx.dispatch(cepFalseState());
+  }
 }
+
