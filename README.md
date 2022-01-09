@@ -21,7 +21,8 @@ Este é um projeto simples, porém com arquitetura, organização de código e c
 &nbsp; &nbsp; └── shared/<br />
 &nbsp; &nbsp; &nbsp; &nbsp; ├── components<br />
 &nbsp; &nbsp; &nbsp; &nbsp; ├── directive<br />
-&nbsp; &nbsp; &nbsp; &nbsp; └── pipes</p>
+&nbsp; &nbsp; &nbsp; &nbsp; ├── pipes<br />
+&nbsp; &nbsp; &nbsp; &nbsp; └── store</p>
 
 <h2><br />
 Prefixo</h2>
@@ -39,7 +40,7 @@ Prefixo</h2>
 
 <h2>Reducer ngRX (inspirado em Redux)</h2>
 
-<p>O projeto contará com gerenciamento reativo de estado dos componentes utilizando a biblioteca ngRx, tornando a aplicação mais poderosa quando se trata de comunicação entre os  componentes locais e globais.</p>
+<p>O projeto conta com gerenciamento reativo de estado dos componentes utilizando a biblioteca ngRx, tornando a aplicação mais poderosa quando se trata de comunicação entre os  componentes locais e globais.</p>
 
 <h2>Shared Module</h2>
 
