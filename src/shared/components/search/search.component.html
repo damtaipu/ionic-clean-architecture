@@ -1,2 +1,7 @@
-
-<ion-searchbar [ngClass]="showState ? 'blueBackGround' : ''" placeholder="Buscar..." debounce="500" (ionChange)="sedvalue(filterTerm.value)" #filterTerm animated="true"></ion-searchbar>
+<ion-searchbar
+  [ngClass]="(showState$ | async) ? 'blueBackGround' : ''"
+  placeholder="Buscar..."
+  debounce="500"
+  (ionChange)="sendValue($event.detail.value)"
+  animated="true">
+</ion-searchbar>

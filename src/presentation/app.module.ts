@@ -18,7 +18,7 @@ import { SharedModule } from '@src/shared/shared.module';
 
 // ngRx
 import { StoreModule } from '@ngrx/store';
-import { cepReducer } from '@src/shared/store/reducers/cep/cep-reducer';
+import { cepFeatureKey, cepReducer } from '@src/shared/store/reducers/cep/cep-reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +29,7 @@ import { cepReducer } from '@src/shared/store/reducers/cep/cep-reducer';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    StoreModule.forRoot({cep: cepReducer})
+    StoreModule.forRoot({ [cepFeatureKey]: cepReducer })
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
