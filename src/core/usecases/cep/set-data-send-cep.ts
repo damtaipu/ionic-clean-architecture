@@ -1,14 +1,20 @@
-export class SetDataCep {
-    private cep: number;
+import { CepSendRequest } from '@src/core/domain/cep-model/cep-model';
 
-    constructor(cep: number) {
-        this.cep = cep;
+export class SetDataCep {
+    private static readonly cepLength = 8;
+    private readonly cep: string;
+
+    constructor(cep: string | number) {
+        this.cep = String(cep).replace(/\D/g, '');
     }
 
-    infoCep() {
-        const cep = {
+    isValid(): boolean {
+        return this.cep.length === SetDataCep.cepLength;
+    }
+
+    infoCep(): CepSendRequest {
+        return {
             cep: this.cep
         };
-        return cep;
     }
 }

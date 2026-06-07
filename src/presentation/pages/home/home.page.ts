@@ -1,70 +1,79 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { finalize } from 'rxjs/operators';
+import { CepAddressModel, CepErrorModel, CepReturnModel } from '@src/core/domain/cep-model/cep-model';
 import { SetDataCep } from '@src/core/usecases/cep/set-data-send-cep';
-import { ICepState } from '@src/shared/store/states/cep/cep-state';
 import { GetCepUseCase } from '@src/core/usecases/cep/get-cep.usecases';
 import { cepFalseState, cepTrueState } from '@src/shared/store/actions/cep/cep-actions';
+import { AppState } from '@src/shared/store/states/cep/cep-state';
 
 @Component({
   selector: 'cep-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-
 export class HomePage {
-
   startVal = true;
   errVal = false;
   loading = false;
-  cepData = [];
-
+  cepData: CepAddressModel[] = [];
 
   constructor(
-    private getCep: GetCepUseCase,
-    private cepNgx: Store<{cep: ICepState}>
-  ) {
-   }
+    private readonly getCep: GetCepUseCase,
+    private readonly store: Store<AppState>
+  ) {}
 
-  async callCep(evt) {
-    this.cepData = [];
-    this.startVal = evt ? false : true;
-    this.errVal = evt ? false : !evt ? false : true;
+  callCep(value: string): void {
+    this.resetSearchState(value);
 
-    if (!evt) {
-      this.cepData = [];
-      this.cepStateFalse();
+    const cep = new SetDataCep(value);
 
-    } else {
-      this.loading = true;
-      const cep = new SetDataCep(evt);
-      this.getCep.execute(cep.infoCep()).subscribe(this.onSuccess, this.onError);
+    if (!cep.isValid()) {
+      this.handleInvalidCep();
+      return;
     }
+
+    this.loading = true;
+    this.getCep.execute(cep.infoCep())
+      .pipe(finalize(() => this.loading = false))
+      .subscribe({
+        next: (response) => this.handleSuccess(response),
+        error: () => this.handleError()
+      });
   }
 
-  onSuccess = (rs) => {
-    this.cepData.push(rs);
-    this.loading = false;
-    this.cepStateTrue();
-  };
+  private resetSearchState(value: string): void {
+    this.cepData = [];
+    this.startVal = !value;
+    this.errVal = false;
+    this.setCepState(false);
+  }
 
-  onError = (err) => {
+  private handleInvalidCep(): void {
+    this.errVal = !this.startVal;
+  }
+
+  private handleSuccess(response: CepReturnModel): void {
+    if (this.isCepError(response)) {
+      this.handleError();
+      return;
+    }
+
+    this.cepData = [response];
+    this.setCepState(true);
+  }
+
+  private handleError(): void {
     this.cepData = [];
     this.errVal = true;
-    this.loading = false;
-    this.cepStateFalse();
-  };
-
-  getLengthCepData(): number {
-    return this.cepData.length;
+    this.setCepState(false);
   }
 
-  // Dispatch ngRx CEP
-  cepStateTrue(){
-    this.cepNgx.dispatch(cepTrueState());
+  private isCepError(response: CepReturnModel): response is CepErrorModel {
+    return 'erro' in response && response.erro;
   }
 
-  cepStateFalse(){
-    this.cepNgx.dispatch(cepFalseState());
+  private setCepState(result: boolean): void {
+    this.store.dispatch(result ? cepTrueState() : cepFalseState());
   }
 }
-

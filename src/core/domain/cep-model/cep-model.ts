@@ -1,31 +1,25 @@
-export interface CepReturnModel {
-    cep?: string;
-    logradouro?: string;
-    complemento?: string;
-    bairro?: string;
-    localidade?: string;
-    uf?: string;
-    ibge?: string;
-    gia?: string;
-    ddd?: string;
-    siafi?: string;
-    erro?: boolean;
+export interface CepAddressModel {
+    cep: string;
+    logradouro: string;
+    complemento: string;
+    bairro: string;
+    localidade: string;
+    uf: string;
+    ibge: string;
+    gia: string;
+    ddd: string;
+    siafi: string;
+    erro?: false;
 }
 
-export interface CepDataEntity {
-    cep?: string;
-    logradouro?: string;
-    complemento?: string;
-    bairro?: string;
-    localidade?: string;
-    uf?: string;
-    ibge?: string;
-    gia?: string;
-    ddd?: string;
-    siafi?: string;
-    erro?: boolean;
+export interface CepErrorModel {
+    erro: true;
 }
+
+export type CepReturnModel = CepAddressModel | CepErrorModel;
+
+export type CepDataEntity = CepReturnModel;
 
 export interface CepSendRequest {
-    cep: number;
+    cep: string;
 }
